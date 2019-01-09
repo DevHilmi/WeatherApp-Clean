@@ -1,0 +1,12 @@
+package com.rizaldev.weatherapp.base;
+
+/**
+ * Created by hilmi.rizaldi (hilmi.rizaldi@dana.id)
+ * created on 09/01/19
+ */
+public interface PresenterHandler {
+
+    void registerPresenter(AbstractContract.AbstractPresenter... presenters);
+
+    void disposePresenter();
+}
