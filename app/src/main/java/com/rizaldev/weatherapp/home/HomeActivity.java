@@ -1,19 +1,18 @@
-package com.rizaldev.weatherapp.main;
+package com.rizaldev.weatherapp.home;
 
 import com.rizaldev.weatherapp.R;
 import com.rizaldev.weatherapp.base.BaseActivity;
 
-public class MainActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @Override
     public int getLayout() {
-        return R.layout.activity_main;
+        return R.layout.activity_home;
     }
 
     @Override
     public void init() {
 
     }
-
 
 }
