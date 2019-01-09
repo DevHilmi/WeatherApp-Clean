@@ -1,6 +1,8 @@
-package com.rizaldev.weatherapp;
+package com.rizaldev.weatherapp.home;
 
-import android.support.v7.app.AppCompatActivity;
+import com.rizaldev.weatherapp.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {

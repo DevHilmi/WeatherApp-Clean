@@ -1,0 +1,75 @@
+ext {
+    //Android
+    androidBuildToolsVersion = "28.0.3"
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+    appCompatVersion = "1.1.0-alpha01"
+    constraintLayoutVersion = "2.0.0-alpha3"
+
+    //Libraries
+    daggerVersion = '2.20'
+    butterKnifeVersion = '10.0.0'
+    rxJavaVersion = '2.2.5'
+    rxAndroidVersion = '2.1.0'
+    retrofitVersion = '2.5.0'
+
+    //Testing
+    robolectricVersion = '4.1'
+    jUnitVersion = '4.12'
+    assertJVersion = '3.11.1'
+    mockitoVersion = '2.6.1'
+    espressoVersion = '3.1.1'
+    testRunnerVersion = '1.1.1'
+
+    //Development
+    leakCanaryVersion = '1.6.2'
+
+    presentationDependencies = [
+            appCompat          : "androidx.appcompat:appcompat:${appCompatVersion}",
+            constraintLayout   : "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
+            daggerCompiler     : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger             : "com.google.dagger:dagger:${daggerVersion}",
+            butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+            butterKnife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            rxJava             : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+    ]
+
+    presentationTestDependencies = [
+            mockito   : "org.mockito:mockito-core:${mockitoVersion}",
+            espresso  : "androidx.test.espresso:espresso-core:${espressoVersion}",
+            testRunner: "androidx.test:runner:${testRunnerVersion}",
+            testRules : "androidx.test:rules:${testRunnerVersion}"
+    ]
+
+    domainDependencies = [
+            rxJava: "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    ]
+
+    domainTestDependencies = [
+            junit  : "junit:junit:${jUnitVersion}",
+            mockito: "org.mockito:mockito-core:${mockitoVersion}",
+            assertj: "org.assertj:assertj-core:${assertJVersion}"
+    ]
+
+    dataDependencies = [
+            daggerCompiler: "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger        : "com.google.dagger:dagger:${daggerVersion}",
+            rxJava        : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid     : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            retrofit      : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            gson          : "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    ]
+
+    dataTestDependencies = [
+            junit      : "junit:junit:${jUnitVersion}",
+            assertj    : "org.assertj:assertj-core:${assertJVersion}",
+            mockito    : "org.mockito:mockito-core:${mockitoVersion}",
+            robolectric: "org.robolectric:robolectric:${robolectricVersion}",
+    ]
+
+    developmentDependencies = [
+            leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+    ]
+}
