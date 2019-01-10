@@ -17,10 +17,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", 'BASE_URL', '"https://api.openweathermap.org/data/2.5/"'
+            buildConfigField "String", 'BASE_URL', '"https://api.openweathermap.org/"'
         }
-        debug{
-            buildConfigField "String", 'BASE_URL', '"https://api.openweathermap.org/data/2.5/"'
+        debug {
+            buildConfigField "String", 'BASE_URL', '"https://api.openweathermap.org/"'
         }
     }
 
@@ -48,6 +48,8 @@ dependencies {
     annotationProcessor presentationDependencies.daggerCompiler
     implementation presentationDependencies.dagger
     annotationProcessor presentationDependencies.butterKnifeCompiler
+    annotationProcessor presentationDependencies.glideCompiler
+    implementation presentationDependencies.glide
     implementation presentationDependencies.butterKnife
     implementation presentationDependencies.rxJava
     implementation presentationDependencies.rxAndroid

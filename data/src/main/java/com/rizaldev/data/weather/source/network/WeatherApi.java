@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface WeatherApi {
 
-    @GET("weather")
+    @GET("data/2.5/weather")
     Single<CurrentWeatherResult> getCurrentWeather(@Query("APPID") String appId,
         @Query("q") String cityName);
 }
