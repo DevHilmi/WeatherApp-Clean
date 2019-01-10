@@ -4,6 +4,7 @@ import com.rizaldev.data.AbstractEntityDataFactory;
 import com.rizaldev.data.Source;
 import com.rizaldev.data.weather.source.mock.MockWeatherEntityData;
 import com.rizaldev.data.weather.source.network.NetworkWeatherEntityData;
+import com.rizaldev.data.weather.source.network.WeatherApi;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -15,9 +16,11 @@ import javax.inject.Singleton;
 @Singleton
 public class WeatherEntityDataFactory extends AbstractEntityDataFactory<WeatherEntityData> {
 
-    @Inject
-    public WeatherEntityDataFactory() {
+    private final WeatherApi weatherApi;
 
+    @Inject
+    public WeatherEntityDataFactory(WeatherApi weatherApi) {
+        this.weatherApi = weatherApi;
     }
 
     @Override
@@ -26,7 +29,7 @@ public class WeatherEntityDataFactory extends AbstractEntityDataFactory<WeatherE
             case Source.MOCK:
                 return new MockWeatherEntityData();
             case Source.NETWORK:
-                return new NetworkWeatherEntityData();
+                return new NetworkWeatherEntityData(weatherApi);
             default:
                 return null;
         }

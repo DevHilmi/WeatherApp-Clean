@@ -14,7 +14,7 @@ import io.reactivex.Observable;
  * Created by hilmi.rizaldi (hilmi.rizaldi@dana.id)
  * created on 10/01/19
  */
-public class GetCurrentWeather extends UseCase<CurrentWeatherResponse, Void> {
+public class GetCurrentWeather extends UseCase<CurrentWeatherResponse, GetCurrentWeather.Params> {
 
     private final WeatherRepository weatherRepository;
 
@@ -26,7 +26,20 @@ public class GetCurrentWeather extends UseCase<CurrentWeatherResponse, Void> {
     }
 
     @Override
-    protected Observable<CurrentWeatherResponse> buildUseCaseObservable(Void aVoid) {
-        return weatherRepository.getCurrentWeather();
+    protected Observable<CurrentWeatherResponse> buildUseCaseObservable(Params params) {
+        return weatherRepository.getCurrentWeather(params.cityName);
+    }
+
+    public static class Params {
+
+        private String cityName;
+
+        private Params(String cityName) {
+            this.cityName = cityName;
+        }
+
+        public static Params forGetCurrentWeather(String cityName) {
+            return new Params(cityName);
+        }
     }
 }

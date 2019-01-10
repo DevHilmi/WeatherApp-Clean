@@ -1,4 +1,4 @@
-package com.rizaldev.data.weather.source.network.result;
+package com.rizaldev.data.weather.source.model.result;
 
 /**
  * Created by hilmi.rizaldi (hilmi.rizaldi@dana.id)

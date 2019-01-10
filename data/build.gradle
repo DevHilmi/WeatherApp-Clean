@@ -15,6 +15,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", 'WEATHER_KEY', '"fdc31f08ff44b9e32808aa49c04afcc4"'
+        }
+        debug {
+            buildConfigField "String", 'WEATHER_KEY', '"fdc31f08ff44b9e32808aa49c04afcc4"'
         }
     }
 
@@ -28,15 +32,16 @@ android {
 dependencies {
     def dataDependencies = rootProject.ext.dataDependencies
     def testDependencies = rootProject.ext.dataTestDependencies
-    
+
     implementation project(path: ':domain')
 
     annotationProcessor dataDependencies.daggerCompiler
     implementation dataDependencies.dagger
     implementation dataDependencies.rxJava
     implementation dataDependencies.rxAndroid
-    implementation dataDependencies.retrofit
-    implementation dataDependencies.gson
+    api dataDependencies.retrofit
+    api dataDependencies.retrofitAdapter
+    api dataDependencies.gson
     implementation dataDependencies.annotations
 
     testImplementation testDependencies.junit

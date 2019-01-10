@@ -63,6 +63,7 @@ ext {
             rxJava        : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
             rxAndroid     : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             retrofit      : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitAdapter      : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
             gson          : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             annotations :"com.android.support:support-annotations:${annotationVersion}"
     ]

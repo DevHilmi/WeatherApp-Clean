@@ -1,8 +1,8 @@
 package com.rizaldev.data.weather.source;
 
-import com.rizaldev.data.weather.source.network.result.CurrentWeatherResult;
-import com.rizaldev.data.weather.source.network.result.UvIndexResult;
-import com.rizaldev.data.weather.source.network.result.WeeklyWeatherResult;
+import com.rizaldev.data.weather.source.model.result.CurrentWeatherResult;
+import com.rizaldev.data.weather.source.model.result.UvIndexResult;
+import com.rizaldev.data.weather.source.model.result.WeeklyWeatherResult;
 
 import io.reactivex.Observable;
 
@@ -12,7 +12,7 @@ import io.reactivex.Observable;
  */
 public interface WeatherEntityData {
 
-    Observable<CurrentWeatherResult> getCurrentWeather();
+    Observable<CurrentWeatherResult> getCurrentWeather(String cityName);
 
     Observable<WeeklyWeatherResult> getWeeklyWeather();
 

@@ -5,7 +5,9 @@ import com.rizaldev.domain.ThreadExecutor;
 import com.rizaldev.domain.weather.repository.WeatherRepository;
 import com.rizaldev.weatherapp.WeatherApplication;
 import com.rizaldev.weatherapp.base.BaseActivity;
+import com.rizaldev.weatherapp.di.modules.ApiModule;
 import com.rizaldev.weatherapp.di.modules.ApplicationModule;
+import com.rizaldev.weatherapp.di.modules.NetworkModule;
 
 import android.app.Application;
 import android.content.Context;
@@ -21,7 +23,9 @@ import dagger.Component;
 
 @Singleton
 @Component(modules = {
-    ApplicationModule.class
+    ApplicationModule.class,
+    NetworkModule.class,
+    ApiModule.class
 })
 public interface ApplicationComponent {
 

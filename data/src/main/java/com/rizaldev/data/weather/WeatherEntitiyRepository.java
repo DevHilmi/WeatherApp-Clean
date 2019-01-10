@@ -3,11 +3,14 @@ package com.rizaldev.data.weather;
 import com.rizaldev.data.Source;
 import com.rizaldev.data.weather.source.WeatherEntityData;
 import com.rizaldev.data.weather.source.WeatherEntityDataFactory;
-import com.rizaldev.data.weather.source.network.result.CurrentWeatherResult;
+import com.rizaldev.data.weather.source.model.result.CurrentWeatherResult;
 import com.rizaldev.domain.weather.CurrentWeatherResponse;
 import com.rizaldev.domain.weather.UvIndexResponse;
 import com.rizaldev.domain.weather.WeeklyWeatherResponse;
 import com.rizaldev.domain.weather.repository.WeatherRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -32,19 +35,23 @@ public class WeatherEntitiyRepository implements WeatherRepository {
     }
 
     @Override
-    public Observable<CurrentWeatherResponse> getCurrentWeather() {
-        return createWeatherData().getCurrentWeather().flatMap(
+    public Observable<CurrentWeatherResponse> getCurrentWeather(String cityName) {
+        return createWeatherData().getCurrentWeather(cityName).flatMap(
             (Function<CurrentWeatherResult, ObservableSource<CurrentWeatherResponse>>)
                 currentWeatherResult -> {
                     CurrentWeatherResponse currentWeatherResponse = new CurrentWeatherResponse();
-                    currentWeatherResponse.dummy = currentWeatherResult.dummy;
+                    currentWeatherResponse.setTemperature(currentWeatherResult.getMain().getTemp());
+                    List<String> weatherDescription = new ArrayList<>();
+                    for (int i = 0; i < currentWeatherResult.getWeather().size(); i++) {
+                        weatherDescription.add(currentWeatherResult.getWeather().get(i).getMain());
+                    }
+                    currentWeatherResponse.setWeatherDescription(weatherDescription);
                     return Observable.just(currentWeatherResponse);
                 });
-
     }
 
     private WeatherEntityData createWeatherData() {
-        return weatherEntityDataFactory.createData(Source.MOCK);
+        return weatherEntityDataFactory.createData(Source.NETWORK);
     }
 
     @Override

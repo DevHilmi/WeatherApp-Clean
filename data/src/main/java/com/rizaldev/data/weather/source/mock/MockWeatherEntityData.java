@@ -1,9 +1,14 @@
 package com.rizaldev.data.weather.source.mock;
 
 import com.rizaldev.data.weather.source.WeatherEntityData;
-import com.rizaldev.data.weather.source.network.result.CurrentWeatherResult;
-import com.rizaldev.data.weather.source.network.result.UvIndexResult;
-import com.rizaldev.data.weather.source.network.result.WeeklyWeatherResult;
+import com.rizaldev.data.weather.source.model.Main;
+import com.rizaldev.data.weather.source.model.Weather;
+import com.rizaldev.data.weather.source.model.result.CurrentWeatherResult;
+import com.rizaldev.data.weather.source.model.result.UvIndexResult;
+import com.rizaldev.data.weather.source.model.result.WeeklyWeatherResult;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.Observable;
 
@@ -14,7 +19,7 @@ import io.reactivex.Observable;
 public class MockWeatherEntityData implements WeatherEntityData {
 
     @Override
-    public Observable<CurrentWeatherResult> getCurrentWeather() {
+    public Observable<CurrentWeatherResult> getCurrentWeather(String cityName) {
         return Observable.just(dummyCurrentWeatherResult());
     }
 
@@ -28,9 +33,16 @@ public class MockWeatherEntityData implements WeatherEntityData {
         return null;
     }
 
-    public CurrentWeatherResult dummyCurrentWeatherResult() {
+    private CurrentWeatherResult dummyCurrentWeatherResult() {
         CurrentWeatherResult currentWeatherResult = new CurrentWeatherResult();
-        currentWeatherResult.dummy = "Dummy Weather";
+        Main main = new Main();
+        main.setTemp(19.2);
+        currentWeatherResult.setMain(main);
+        Weather weather1 = new Weather();
+        weather1.setMain("Mist");
+        List<Weather> weathers = new ArrayList<>();
+        weathers.add(weather1);
+        currentWeatherResult.setWeather(weathers);
         return currentWeatherResult;
     }
 
