@@ -13,8 +13,8 @@ Persistence Library | https://developer.android.com/training/data-storage/room/ 
 # Functionality
 No | Task | Backlog | On Going | Testing | Finished|
 --- | --- | --- | --- | --- |--- |
-1 | Design Architecture | | :+1:  |  | |
-2 | Current Weather | :+1: |  |  | |
+1 | Design Architecture | |   | :+1: | |
+2 | Current Weather | |  :+1: |  | |
 3 | Weekly Weather|:+1:   |  |  | | 
 4 | UV Index  | :+1: |  |  | | 
 
