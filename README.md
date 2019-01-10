@@ -11,10 +11,11 @@ Networking | https://square.github.io/retrofit/  |
 Persistence Library | https://developer.android.com/training/data-storage/room/  |  
 
 # Functionality
-No | Task | Percentage | 
---- | --- | --- |
-1 | Current Weather | ![](http://progressed.io/bar/0 )|
-2 | Weekly Weather|![](http://progressed.io/bar/0 )  | 
-3 | UV Index  | ![](http://progressed.io/bar/0 ) |  
+No | Task | Backlog | On Going | Testing | Finished|
+--- | --- | --- | --- | --- |--- |
+1 | Design Architecture | | :+1:  |  | |
+2 | Current Weather | :+1: |  |  | |
+3 | Weekly Weather|:+1:   |  |  | | 
+4 | UV Index  | :+1: |  |  | | 
 
 
