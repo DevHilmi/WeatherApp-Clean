@@ -12,6 +12,8 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import dagger.internal.Preconditions;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -27,12 +29,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Disposea
 
     private List<AbstractContract.AbstractPresenter> presenterList;
 
+    private Unbinder unbinder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getApplicationComponent().inject(this);
-
         setContentView(getLayout());
+        unbinder = ButterKnife.bind(this);
         init(savedInstanceState);
     }
 
@@ -50,6 +54,16 @@ public abstract class BaseActivity extends AppCompatActivity implements Disposea
     }
 
     public abstract void init();
+
+    @Override
+    protected void onDestroy() {
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
+        dispose();
+        disposePresenter();
+        super.onDestroy();
+    }
 
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

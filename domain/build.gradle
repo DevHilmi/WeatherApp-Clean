@@ -5,6 +5,8 @@ dependencies {
     def domainTestDependencies = rootProject.ext.domainTestDependencies
 
     implementation domainDependencies.rxJava
+    annotationProcessor domainDependencies.daggerCompiler
+    implementation domainDependencies.dagger
 
     testImplementation domainTestDependencies.junit
     testImplementation domainTestDependencies.mockito

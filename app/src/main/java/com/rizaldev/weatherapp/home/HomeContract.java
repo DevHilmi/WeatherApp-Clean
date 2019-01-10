@@ -10,9 +10,12 @@ public interface HomeContract {
 
     interface View {
 
+        void showWeatherInfo(String weatherInfo);
     }
 
     interface Presenter extends AbstractContract.AbstractPresenter {
 
+        void getWeatherInfo();
+        void unsubscribeObserver();
     }
 }

@@ -28,6 +28,8 @@ android {
 dependencies {
     def dataDependencies = rootProject.ext.dataDependencies
     def testDependencies = rootProject.ext.dataTestDependencies
+    
+    implementation project(path: ':domain')
 
     annotationProcessor dataDependencies.daggerCompiler
     implementation dataDependencies.dagger
@@ -35,6 +37,7 @@ dependencies {
     implementation dataDependencies.rxAndroid
     implementation dataDependencies.retrofit
     implementation dataDependencies.gson
+    implementation dataDependencies.annotations
 
     testImplementation testDependencies.junit
     testImplementation testDependencies.assertj

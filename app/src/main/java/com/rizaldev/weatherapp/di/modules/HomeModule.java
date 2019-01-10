@@ -1,5 +1,6 @@
 package com.rizaldev.weatherapp.di.modules;
 
+import com.rizaldev.weatherapp.di.PerActivity;
 import com.rizaldev.weatherapp.home.HomeContract;
 import com.rizaldev.weatherapp.home.HomePresenter;
 
@@ -20,11 +21,13 @@ public class HomeModule {
     }
 
     @Provides
+    @PerActivity
     HomeContract.View provideView() {
         return this.view;
     }
 
     @Provides
+    @PerActivity
     HomeContract.Presenter providePresenter(HomePresenter presenter) {
         return presenter;
     }

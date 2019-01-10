@@ -6,6 +6,7 @@ ext {
     androidCompileSdkVersion = 28
     appCompatVersion = "1.1.0-alpha01"
     constraintLayoutVersion = "2.0.0-alpha3"
+    annotationVersion = "28.0.0"
 
     //Libraries
     daggerVersion = '2.20'
@@ -44,13 +45,16 @@ ext {
     ]
 
     domainDependencies = [
-            rxJava: "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+            rxJava: "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            daggerCompiler     : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger             : "com.google.dagger:dagger:${daggerVersion}"
     ]
 
     domainTestDependencies = [
             junit  : "junit:junit:${jUnitVersion}",
             mockito: "org.mockito:mockito-core:${mockitoVersion}",
             assertj: "org.assertj:assertj-core:${assertJVersion}"
+
     ]
 
     dataDependencies = [
@@ -59,7 +63,8 @@ ext {
             rxJava        : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
             rxAndroid     : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             retrofit      : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            gson          : "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+            gson          : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            annotations :"com.android.support:support-annotations:${annotationVersion}"
     ]
 
     dataTestDependencies = [

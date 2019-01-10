@@ -1,5 +1,8 @@
 package com.rizaldev.weatherapp.di.components;
 
+import com.rizaldev.domain.PostExecutionThread;
+import com.rizaldev.domain.ThreadExecutor;
+import com.rizaldev.domain.weather.repository.WeatherRepository;
 import com.rizaldev.weatherapp.WeatherApplication;
 import com.rizaldev.weatherapp.base.BaseActivity;
 import com.rizaldev.weatherapp.di.modules.ApplicationModule;
@@ -29,4 +32,11 @@ public interface ApplicationComponent {
     Context context();
 
     Application application();
+
+    ThreadExecutor threadExecutor();
+
+    PostExecutionThread postExecutionThread();
+
+    WeatherRepository weatherRepository();
+
 }
