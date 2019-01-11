@@ -26,7 +26,6 @@ public class HomeFragmentPagerAdapter extends BaseFragmentPagerAdapter {
     }
 
     public static HomeFragmentPagerAdapter build(FragmentManager fragmentManager) {
-        // TODO (hilmi.rizaldi) : adding other fragment to this adapter
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(WeatherInfoFragment.newInstance());
         fragments.add(WeeklyFragment.newInstance());
