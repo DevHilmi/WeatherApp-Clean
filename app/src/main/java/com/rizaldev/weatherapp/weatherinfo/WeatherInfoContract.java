@@ -13,6 +13,8 @@ public interface WeatherInfoContract {
         void showWeatherInfo(String weatherInfo);
 
         void showWeatherImages(String imageUrl);
+
+        void showError(String error);
     }
 
     interface Presenter extends AbstractContract.AbstractPresenter {

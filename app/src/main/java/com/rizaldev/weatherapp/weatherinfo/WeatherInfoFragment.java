@@ -62,4 +62,9 @@ public class WeatherInfoFragment extends BaseFragment implements WeatherInfoCont
     public void showWeatherImages(String imageUrl) {
         Glide.with(this).load(imageUrl).into(imageInfo);
     }
+
+    @Override
+    public void showError(String error) {
+        showToast(error);
+    }
 }

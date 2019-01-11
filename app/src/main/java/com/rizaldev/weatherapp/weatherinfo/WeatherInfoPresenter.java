@@ -36,7 +36,6 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
     }
 
     private DefaultObserver<CurrentWeatherResponse> getWeatherResponseDefaultObserver() {
-        // TODO (hilmi.rizaldi) : Show error message if error.
         if (weatherResponseDefaultObserver == null) {
             weatherResponseDefaultObserver = new DefaultObserver<CurrentWeatherResponse>() {
                 @Override
@@ -52,6 +51,7 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
                 public void onError(Throwable e) {
                     // TODO (hilmi.rizaldi) : configure timber for better logger.
                     Log.d("Test", e.getMessage());
+                    view.showError("Error take data");
                 }
 
                 @Override
