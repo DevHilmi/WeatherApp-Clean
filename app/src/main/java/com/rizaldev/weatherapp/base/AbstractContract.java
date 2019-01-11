@@ -16,12 +16,6 @@ public interface AbstractContract {
 
     }
 
-    interface AuthenticatedAbstractView extends AbstractView {
-
-        void onSessionExpired();
-
-    }
-
     interface AbstractPresenter {
 
         void onDestroy();
