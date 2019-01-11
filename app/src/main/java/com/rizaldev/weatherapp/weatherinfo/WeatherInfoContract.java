@@ -1,4 +1,4 @@
-package com.rizaldev.weatherapp.home;
+package com.rizaldev.weatherapp.weatherinfo;
 
 import com.rizaldev.weatherapp.base.AbstractContract;
 
@@ -6,7 +6,7 @@ import com.rizaldev.weatherapp.base.AbstractContract;
  * Created by hilmi.rizaldi (hilmi.rizaldi@dana.id)
  * created on 09/01/19
  */
-public interface HomeContract {
+public interface WeatherInfoContract {
 
     interface View {
 

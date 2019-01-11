@@ -1,8 +1,8 @@
 package com.rizaldev.weatherapp.di.modules;
 
 import com.rizaldev.weatherapp.di.PerActivity;
-import com.rizaldev.weatherapp.home.HomeContract;
-import com.rizaldev.weatherapp.home.HomePresenter;
+import com.rizaldev.weatherapp.weatherinfo.WeatherInfoContract;
+import com.rizaldev.weatherapp.weatherinfo.WeatherInfoPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -12,23 +12,23 @@ import dagger.Provides;
  * created on 09/01/19
  */
 @Module
-public class HomeModule {
+public class WeatherModule {
 
-    private HomeContract.View view;
+    private WeatherInfoContract.View view;
 
-    public HomeModule(HomeContract.View view) {
+    public WeatherModule(WeatherInfoContract.View view) {
         this.view = view;
     }
 
     @Provides
     @PerActivity
-    HomeContract.View provideView() {
+    WeatherInfoContract.View provideView() {
         return this.view;
     }
 
     @Provides
     @PerActivity
-    HomeContract.Presenter providePresenter(HomePresenter presenter) {
+    WeatherInfoContract.Presenter providePresenter(WeatherInfoPresenter presenter) {
         return presenter;
     }
 }

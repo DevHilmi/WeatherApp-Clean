@@ -43,6 +43,7 @@ dependencies {
     // Android Library
     implementation presentationDependencies.appCompat
     implementation presentationDependencies.constraintLayout
+    implementation presentationDependencies.material
 
     // Library
     annotationProcessor presentationDependencies.daggerCompiler

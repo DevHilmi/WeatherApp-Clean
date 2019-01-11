@@ -1,4 +1,4 @@
-package com.rizaldev;
+package com.rizaldev.data;
 
 import com.rizaldev.domain.ThreadExecutor;
 

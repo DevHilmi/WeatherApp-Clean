@@ -1,4 +1,4 @@
-package com.rizaldev.weatherapp.home;
+package com.rizaldev.weatherapp.weatherinfo;
 
 import com.rizaldev.domain.DefaultObserver;
 import com.rizaldev.domain.weather.CurrentWeatherResponse;
@@ -12,17 +12,17 @@ import javax.inject.Inject;
  * Created by hilmi.rizaldi (hilmi.rizaldi@dana.id)
  * created on 09/01/19
  */
-public class HomePresenter implements HomeContract.Presenter {
+public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
 
     private final GetCurrentWeather getCurrentWeather;
 
-    private final HomeContract.View view;
+    private final WeatherInfoContract.View view;
 
     private DefaultObserver<CurrentWeatherResponse> weatherResponseDefaultObserver;
 
     @Inject
-    public HomePresenter(GetCurrentWeather getCurrentWeather,
-        HomeContract.View view) {
+    public WeatherInfoPresenter(GetCurrentWeather getCurrentWeather,
+        WeatherInfoContract.View view) {
         this.getCurrentWeather = getCurrentWeather;
         this.view = view;
     }

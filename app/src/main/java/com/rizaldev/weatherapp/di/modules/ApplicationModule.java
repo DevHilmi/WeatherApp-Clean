@@ -1,6 +1,6 @@
 package com.rizaldev.weatherapp.di.modules;
 
-import com.rizaldev.JobExecutor;
+import com.rizaldev.data.JobExecutor;
 import com.rizaldev.data.weather.WeatherEntitiyRepository;
 import com.rizaldev.domain.PostExecutionThread;
 import com.rizaldev.domain.ThreadExecutor;
