@@ -41,6 +41,7 @@ public class WeatherEntitiyRepository implements WeatherRepository {
         return createWeatherData().getCurrentWeather(cityName).flatMap(
             (Function<CurrentWeatherResult, ObservableSource<CurrentWeatherResponse>>)
                 currentWeatherResult -> {
+                    // TODO (hilmi.rizaldi) : use custom mapper for single purpose entity
                     CurrentWeatherResponse currentWeatherResponse = new CurrentWeatherResponse();
                     List<WeatherInfo> weatherInfoDescription = new ArrayList<>();
                     for (int i = 0; i < currentWeatherResult.getWeather().size(); i++) {
