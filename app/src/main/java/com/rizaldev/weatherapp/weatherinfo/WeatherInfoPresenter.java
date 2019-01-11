@@ -37,6 +37,7 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
 
     private DefaultObserver<CurrentWeatherResponse> getWeatherResponseDefaultObserver() {
         if (weatherResponseDefaultObserver == null) {
+            view.showProgress();
             weatherResponseDefaultObserver = new DefaultObserver<CurrentWeatherResponse>() {
                 @Override
                 public void onNext(CurrentWeatherResponse currentWeatherResponse) {
@@ -45,6 +46,7 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
                         BuildConfig.BASE_URL + "img/w/" + currentWeatherResponse.getWeathersInfo()
                             .get(0)
                             .getImg() + ".png");
+
                 }
 
                 @Override
@@ -52,11 +54,12 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
                     // TODO (hilmi.rizaldi) : configure timber for better logger.
                     Log.d("Test", e.getMessage());
                     view.showError("Error take data");
+                    view.dismissProgress();
                 }
 
                 @Override
                 public void onComplete() {
-
+                    view.dismissProgress();
                 }
             };
         }

@@ -15,6 +15,10 @@ public interface WeatherInfoContract {
         void showWeatherImages(String imageUrl);
 
         void showError(String error);
+
+        void showProgress();
+
+        void dismissProgress();
     }
 
     interface Presenter extends AbstractContract.AbstractPresenter {

@@ -1,9 +1,12 @@
 package com.rizaldev.weatherapp.base;
 
+import com.rizaldev.weatherapp.R;
 import com.rizaldev.weatherapp.WeatherApplication;
 import com.rizaldev.weatherapp.di.components.ApplicationComponent;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -12,6 +15,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dagger.internal.Preconditions;
@@ -24,6 +28,10 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class BaseActivity extends AppCompatActivity implements DisposeableHandler,
     PresenterHandler {
+
+    @Nullable
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private CompositeDisposable disposables;
 
@@ -104,6 +112,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Disposea
             for (AbstractContract.AbstractPresenter presenter : presenterList) {
                 presenter.onDestroy();
             }
+        }
+    }
+
+    public void isLoading(Boolean isLoading) {
+        if (progressBar != null) {
+            progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
         }
     }
 }
