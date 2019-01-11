@@ -25,6 +25,5 @@ public interface WeatherInfoContract {
 
         void getWeatherInfo();
 
-        void unsubscribeObserver();
     }
 }

@@ -19,8 +19,6 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
 
     private final WeatherInfoContract.View view;
 
-    private DefaultObserver<CurrentWeatherResponse> weatherResponseDefaultObserver;
-
     @Inject
     public WeatherInfoPresenter(GetCurrentWeather getCurrentWeather,
         WeatherInfoContract.View view) {
@@ -36,42 +34,31 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
     }
 
     private DefaultObserver<CurrentWeatherResponse> getWeatherResponseDefaultObserver() {
-        if (weatherResponseDefaultObserver == null) {
-            view.showProgress();
-            weatherResponseDefaultObserver = new DefaultObserver<CurrentWeatherResponse>() {
-                @Override
-                public void onNext(CurrentWeatherResponse currentWeatherResponse) {
-                    view.showWeatherInfo(currentWeatherResponse.getWeathersInfo().get(0).getInfo());
-                    view.showWeatherImages(
-                        BuildConfig.BASE_URL + "img/w/" + currentWeatherResponse.getWeathersInfo()
-                            .get(0)
-                            .getImg() + ".png");
+        view.showProgress();
+        return new DefaultObserver<CurrentWeatherResponse>() {
+            @Override
+            public void onNext(CurrentWeatherResponse currentWeatherResponse) {
+                view.showWeatherInfo(currentWeatherResponse.getWeathersInfo().get(0).getInfo());
+                view.showWeatherImages(
+                    BuildConfig.BASE_URL + "img/w/" + currentWeatherResponse.getWeathersInfo()
+                        .get(0)
+                        .getImg() + ".png");
 
-                }
+            }
 
-                @Override
-                public void onError(Throwable e) {
-                    // TODO (hilmi.rizaldi) : configure timber for better logger.
-                    Log.d("Test", e.getMessage());
-                    view.showError("Error take data");
-                    view.dismissProgress();
-                }
+            @Override
+            public void onError(Throwable e) {
+                // TODO (hilmi.rizaldi) : configure timber for better logger.
+                Log.d("Test", e.getMessage());
+                view.showError("Error take data");
+                view.dismissProgress();
+            }
 
-                @Override
-                public void onComplete() {
-                    view.dismissProgress();
-                }
-            };
-        }
-        return weatherResponseDefaultObserver;
-    }
-
-    @Override
-    public void unsubscribeObserver() {
-        if (weatherResponseDefaultObserver != null) {
-            weatherResponseDefaultObserver.dispose();
-            weatherResponseDefaultObserver = null;
-        }
+            @Override
+            public void onComplete() {
+                view.dismissProgress();
+            }
+        };
     }
 
     @Override
