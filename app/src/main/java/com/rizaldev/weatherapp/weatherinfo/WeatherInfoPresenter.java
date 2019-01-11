@@ -29,8 +29,9 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
 
     @Override
     public void getWeatherInfo() {
+        // TODO (hilmi.rizaldi) : enable user to set current city weather.
         getCurrentWeather.execute(getWeatherResponseDefaultObserver(),
-            GetCurrentWeather.Params.forGetCurrentWeather("London"));
+            GetCurrentWeather.Params.forGetCurrentWeather("Jakarta"));
     }
 
     private DefaultObserver<CurrentWeatherResponse> getWeatherResponseDefaultObserver() {
@@ -44,6 +45,7 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
 
                 @Override
                 public void onError(Throwable e) {
+                    // TODO (hilmi.rizaldi) : configure timber for better logger.
                     Log.d("Test", e.getMessage());
                 }
 
