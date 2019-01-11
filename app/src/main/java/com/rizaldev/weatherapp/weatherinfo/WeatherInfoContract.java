@@ -11,11 +11,14 @@ public interface WeatherInfoContract {
     interface View {
 
         void showWeatherInfo(String weatherInfo);
+
+        void showWeatherImages(String imageUrl);
     }
 
     interface Presenter extends AbstractContract.AbstractPresenter {
 
         void getWeatherInfo();
+
         void unsubscribeObserver();
     }
 }

@@ -1,11 +1,13 @@
 package com.rizaldev.weatherapp.weatherinfo;
 
+import com.bumptech.glide.Glide;
 import com.rizaldev.weatherapp.R;
 import com.rizaldev.weatherapp.base.BaseFragment;
 import com.rizaldev.weatherapp.di.components.DaggerWeatherComponent;
 import com.rizaldev.weatherapp.di.components.WeatherComponent;
 import com.rizaldev.weatherapp.di.modules.WeatherModule;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import javax.inject.Inject;
@@ -13,6 +15,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 
 public class WeatherInfoFragment extends BaseFragment implements WeatherInfoContract.View {
+
+    @BindView(R.id.imageInfo)
+    ImageView imageInfo;
 
     @BindView(R.id.textInfo)
     TextView textInfo;
@@ -51,5 +56,10 @@ public class WeatherInfoFragment extends BaseFragment implements WeatherInfoCont
     @Override
     public void showWeatherInfo(String weatherInfo) {
         textInfo.setText(weatherInfo);
+    }
+
+    @Override
+    public void showWeatherImages(String imageUrl) {
+        Glide.with(this).load(imageUrl).into(imageInfo);
     }
 }
