@@ -1,5 +1,7 @@
 package com.rizaldev.domain.weather;
 
+import com.rizaldev.domain.weather.model.WeatherInfo;
+
 import java.util.List;
 
 /**
@@ -10,7 +12,7 @@ public class CurrentWeatherResponse {
 
     private Double temperature;
 
-    private List<String> weatherDescription;
+    private List<WeatherInfo> weathersInfo;
 
     public CurrentWeatherResponse() {
     }
@@ -23,11 +25,11 @@ public class CurrentWeatherResponse {
         this.temperature = temperature;
     }
 
-    public List<String> getWeatherDescription() {
-        return weatherDescription;
+    public List<WeatherInfo> getWeathersInfo() {
+        return weathersInfo;
     }
 
-    public void setWeatherDescription(List<String> weatherDescription) {
-        this.weatherDescription = weatherDescription;
+    public void setWeatherInfoDescription(List<WeatherInfo> weatherInfoDescription) {
+        this.weathersInfo = weatherInfoDescription;
     }
 }

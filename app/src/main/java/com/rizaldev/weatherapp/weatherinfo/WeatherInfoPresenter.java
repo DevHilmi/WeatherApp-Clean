@@ -3,6 +3,7 @@ package com.rizaldev.weatherapp.weatherinfo;
 import com.rizaldev.domain.DefaultObserver;
 import com.rizaldev.domain.weather.CurrentWeatherResponse;
 import com.rizaldev.domain.weather.interactor.GetCurrentWeather;
+import com.rizaldev.weatherapp.BuildConfig;
 
 import android.util.Log;
 
@@ -40,7 +41,11 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
             weatherResponseDefaultObserver = new DefaultObserver<CurrentWeatherResponse>() {
                 @Override
                 public void onNext(CurrentWeatherResponse currentWeatherResponse) {
-                    view.showWeatherInfo(String.valueOf(currentWeatherResponse.getTemperature()));
+                    view.showWeatherInfo(currentWeatherResponse.getWeathersInfo().get(0).getInfo());
+                    view.showWeatherImages(
+                        BuildConfig.BASE_URL + "img/w/" + currentWeatherResponse.getWeathersInfo()
+                            .get(0)
+                            .getImg() + ".png");
                 }
 
                 @Override

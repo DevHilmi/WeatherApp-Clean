@@ -3,10 +3,12 @@ package com.rizaldev.data.weather;
 import com.rizaldev.data.Source;
 import com.rizaldev.data.weather.source.WeatherEntityData;
 import com.rizaldev.data.weather.source.WeatherEntityDataFactory;
+import com.rizaldev.data.weather.source.model.Weather;
 import com.rizaldev.data.weather.source.model.result.CurrentWeatherResult;
 import com.rizaldev.domain.weather.CurrentWeatherResponse;
 import com.rizaldev.domain.weather.UvIndexResponse;
 import com.rizaldev.domain.weather.WeeklyWeatherResponse;
+import com.rizaldev.domain.weather.model.WeatherInfo;
 import com.rizaldev.domain.weather.repository.WeatherRepository;
 
 import java.util.ArrayList;
@@ -40,12 +42,14 @@ public class WeatherEntitiyRepository implements WeatherRepository {
             (Function<CurrentWeatherResult, ObservableSource<CurrentWeatherResponse>>)
                 currentWeatherResult -> {
                     CurrentWeatherResponse currentWeatherResponse = new CurrentWeatherResponse();
-                    currentWeatherResponse.setTemperature(currentWeatherResult.getMain().getTemp());
-                    List<String> weatherDescription = new ArrayList<>();
+                    List<WeatherInfo> weatherInfoDescription = new ArrayList<>();
                     for (int i = 0; i < currentWeatherResult.getWeather().size(); i++) {
-                        weatherDescription.add(currentWeatherResult.getWeather().get(i).getMain());
+                        Weather weather = currentWeatherResult.getWeather().get(i);
+                        weatherInfoDescription.add(
+                            new WeatherInfo(weather.getMain(),
+                                weather.getIcon()));
                     }
-                    currentWeatherResponse.setWeatherDescription(weatherDescription);
+                    currentWeatherResponse.setWeatherInfoDescription(weatherInfoDescription);
                     return Observable.just(currentWeatherResponse);
                 });
     }
