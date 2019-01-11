@@ -21,6 +21,7 @@ public abstract class BaseActivityViewPager extends BaseActivity {
 
     protected void registerViewPagerWithTabLayout(ViewPager viewPager, TabLayout tabLayout,
         BaseFragmentPagerAdapter fragmentPagerAdapter) {
+        viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
