@@ -64,11 +64,6 @@ public class WeatherInfoFragment extends BaseFragment implements WeatherInfoCont
     }
 
     @Override
-    public void showError(String error) {
-        showToast(error);
-    }
-
-    @Override
     public void showProgress() {
         getBaseActivity().isLoading(true);
     }
@@ -76,5 +71,10 @@ public class WeatherInfoFragment extends BaseFragment implements WeatherInfoCont
     @Override
     public void dismissProgress() {
         getBaseActivity().isLoading(false);
+    }
+
+    @Override
+    public void onError(String errorMessage) {
+        showToast(errorMessage);
     }
 }

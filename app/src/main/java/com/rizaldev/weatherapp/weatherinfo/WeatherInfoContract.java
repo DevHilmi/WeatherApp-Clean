@@ -8,17 +8,12 @@ import com.rizaldev.weatherapp.base.AbstractContract;
  */
 public interface WeatherInfoContract {
 
-    interface View {
+    interface View extends AbstractContract.AbstractView {
 
         void showWeatherInfo(String weatherInfo);
 
         void showWeatherImages(String imageUrl);
 
-        void showError(String error);
-
-        void showProgress();
-
-        void dismissProgress();
     }
 
     interface Presenter extends AbstractContract.AbstractPresenter {

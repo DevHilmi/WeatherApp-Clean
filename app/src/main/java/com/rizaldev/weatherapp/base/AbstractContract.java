@@ -5,6 +5,7 @@ package com.rizaldev.weatherapp.base;
  * created on 09/01/19
  */
 public interface AbstractContract {
+
     interface AbstractView {
 
         void showProgress();

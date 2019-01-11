@@ -13,8 +13,7 @@ import androidx.fragment.app.Fragment;
 public class UvFragment extends BaseFragment {
 
     public static UvFragment newInstance() {
-        UvFragment fragment = new UvFragment();
-        return fragment;
+        return new UvFragment();
     }
 
     @Override

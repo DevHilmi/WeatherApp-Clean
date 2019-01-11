@@ -38,19 +38,21 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter {
         return new DefaultObserver<CurrentWeatherResponse>() {
             @Override
             public void onNext(CurrentWeatherResponse currentWeatherResponse) {
-                view.showWeatherInfo(currentWeatherResponse.getWeathersInfo().get(0).getInfo());
-                view.showWeatherImages(
-                    BuildConfig.BASE_URL + "img/w/" + currentWeatherResponse.getWeathersInfo()
-                        .get(0)
-                        .getImg() + ".png");
-
+                if (currentWeatherResponse.getWeathersInfo() != null && currentWeatherResponse
+                    .getWeathersInfo().size() > 0) {
+                    view.showWeatherInfo(currentWeatherResponse.getWeathersInfo().get(0).getInfo());
+                    view.showWeatherImages(
+                        BuildConfig.BASE_URL + "img/w/" + currentWeatherResponse.getWeathersInfo()
+                            .get(0)
+                            .getImg() + ".png");
+                }
             }
 
             @Override
             public void onError(Throwable e) {
                 // TODO (hilmi.rizaldi) : configure timber for better logger.
                 Log.d("Test", e.getMessage());
-                view.showError("Error take data");
+                view.onError("Error take data");
                 view.dismissProgress();
             }
 
