@@ -4,7 +4,6 @@ import com.rizaldev.data.Source;
 import com.rizaldev.data.weather.mapper.CurrentWeatherMapper;
 import com.rizaldev.data.weather.source.WeatherEntityData;
 import com.rizaldev.data.weather.source.WeatherEntityDataFactory;
-import com.rizaldev.data.weather.source.model.result.CurrentWeatherResult;
 import com.rizaldev.domain.weather.CurrentWeatherResponse;
 import com.rizaldev.domain.weather.UvIndexResponse;
 import com.rizaldev.domain.weather.WeeklyWeatherResponse;
@@ -14,8 +13,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.functions.Function;
 
 /**
  * Created by hilmi.rizaldi (hilmi.rizaldi@dana.id)
@@ -38,8 +35,7 @@ public class WeatherEntitiyRepository implements WeatherRepository {
     @Override
     public Observable<CurrentWeatherResponse> getCurrentWeather(String cityName) {
         return createWeatherData().getCurrentWeather(cityName).flatMap(
-            (Function<CurrentWeatherResult, ObservableSource<CurrentWeatherResponse>>)
-                currentWeatherResult -> Observable.just(mapper.transform(currentWeatherResult)));
+            currentWeatherResult -> Observable.just(mapper.transform(currentWeatherResult)));
     }
 
     private WeatherEntityData createWeatherData() {
