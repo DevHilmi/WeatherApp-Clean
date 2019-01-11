@@ -40,6 +40,7 @@ public class MockWeatherEntityData implements WeatherEntityData {
         currentWeatherResult.setMain(main);
         Weather weather1 = new Weather();
         weather1.setMain("Mist");
+        weather1.setIcon("50n");
         List<Weather> weathers = new ArrayList<>();
         weathers.add(weather1);
         currentWeatherResult.setWeather(weathers);

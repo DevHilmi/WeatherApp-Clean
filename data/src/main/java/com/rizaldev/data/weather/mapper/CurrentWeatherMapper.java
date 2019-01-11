@@ -25,11 +25,13 @@ public class CurrentWeatherMapper {
     public CurrentWeatherResponse transform(CurrentWeatherResult currentWeatherResult) {
         CurrentWeatherResponse currentWeatherResponse = new CurrentWeatherResponse();
         List<WeatherInfo> weatherInfoDescription = new ArrayList<>();
-        for (int i = 0; i < currentWeatherResult.getWeather().size(); i++) {
-            Weather weather = currentWeatherResult.getWeather().get(i);
-            weatherInfoDescription.add(
-                new WeatherInfo(weather.getMain(),
-                    weather.getIcon()));
+        if (currentWeatherResult.getWeather() != null) {
+            for (int i = 0; i < currentWeatherResult.getWeather().size(); i++) {
+                Weather weather = currentWeatherResult.getWeather().get(i);
+                weatherInfoDescription.add(
+                    new WeatherInfo(weather.getMain(),
+                        weather.getIcon()));
+            }
         }
         currentWeatherResponse.setWeatherInfoDescription(weatherInfoDescription);
         return currentWeatherResponse;

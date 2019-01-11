@@ -26,7 +26,7 @@ public class WeatherEntitiyRepository implements WeatherRepository {
     private final WeatherEntityDataFactory weatherEntityDataFactory;
 
     @Inject
-    public WeatherEntitiyRepository(
+    WeatherEntitiyRepository(
         WeatherEntityDataFactory weatherEntityDataFactory, CurrentWeatherMapper mapper) {
         this.weatherEntityDataFactory = weatherEntityDataFactory;
         this.mapper = mapper;
