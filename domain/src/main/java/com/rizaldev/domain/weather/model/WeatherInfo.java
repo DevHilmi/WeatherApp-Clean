@@ -6,9 +6,9 @@ package com.rizaldev.domain.weather.model;
  */
 public class WeatherInfo {
 
-    String img;
+    private String img;
 
-    String info;
+    private String info;
 
     public WeatherInfo(String info, String img) {
         this.info = info;
